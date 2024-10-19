@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_projects/core/colors_manager.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/quran_tab/widgets/quran_header_widget.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/quran_tab/widgets/sura_name_widget.dart';
+
 import '../../../../../core/assets_manager.dart';
 
 class QuranTab extends StatelessWidget {
@@ -239,7 +240,6 @@ class QuranTab extends StatelessWidget {
     5,
     6
   ];
-
   @override
   Widget build(BuildContext context) {
     return Container(

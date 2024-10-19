@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_projects/core/assets_manager.dart';
 import 'package:flutter_projects/core/strings_manager.dart';
-import 'package:flutter_projects/presentation/screens/home/quran_details_screen/widgets/quran_details_body.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/quran_tab/quran_tab.dart';
 
 class QuranDetails extends StatefulWidget {
@@ -28,13 +27,13 @@ class _QuranDetailsState extends State<QuranDetails> {
         ),
         Scaffold(
           appBar: AppBar(
-            title: Text(StringsManager.appBarTitle),
+            title: Text(suraItem.suraName),
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             child: Column(
               children: [
-                Text(suraItem.suraName,
+                Text(StringsManager.suraHeader,
                     style: Theme.of(context).textTheme.headlineMedium),
                 Container(
                   height: 1,
@@ -46,7 +45,10 @@ class _QuranDetailsState extends State<QuranDetails> {
                       shape: Theme.of(context).cardTheme.shape,
                       color: Theme.of(context).cardTheme.color,
                       child: verses.isEmpty
-                          ? const Center(child: CircularProgressIndicator())
+                          ? Center(
+                              child: CircularProgressIndicator(
+                              color: Theme.of(context).dividerColor,
+                            ))
                           : ListView.builder(
                               itemBuilder: (context, index) => Padding(
                                 padding: const EdgeInsets.all(8.0),
