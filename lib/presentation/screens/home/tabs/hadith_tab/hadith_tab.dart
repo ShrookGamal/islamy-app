@@ -29,7 +29,7 @@ class _HadithTabState extends State<HadithTab> {
             : Expanded(
                 flex: 2,
                 child: ListView.builder(
-                  itemBuilder: (context, index) => hadithTitleWidget(
+                  itemBuilder: (context, index) => HadithTitleWidget(
                     hadith: hadithList[index],
                   ),
                   itemCount: hadithList.length,
