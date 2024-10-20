@@ -30,8 +30,9 @@ class _QuranDetailsState extends State<QuranDetails> {
             title: Text(suraItem.suraName),
           ),
           body: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-            child: Column(
+            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+            child: Card(
+                child: Column(
               children: [
                 Text(StringsManager.suraHeader,
                     style: Theme.of(context).textTheme.headlineMedium),
@@ -41,28 +42,25 @@ class _QuranDetailsState extends State<QuranDetails> {
                   color: Theme.of(context).dividerColor,
                 ),
                 Expanded(
-                  child: Card(
-                      shape: Theme.of(context).cardTheme.shape,
-                      color: Theme.of(context).cardTheme.color,
+                  child: ListView.builder(
+                    itemBuilder: (context, index) => Padding(
+                                padding: const EdgeInsets.all(8.0),
                       child: verses.isEmpty
                           ? Center(
                               child: CircularProgressIndicator(
                               color: Theme.of(context).dividerColor,
                             ))
-                          : ListView.builder(
-                              itemBuilder: (context, index) => Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  verses[index],
+                          : Text(
+                              verses[index],
                                   textAlign: TextAlign.center,
                                   textDirection: TextDirection.rtl,
                                 ),
                               ),
                               itemCount: verses.length,
-                            )),
+                  ),
                 ),
               ],
-            ),
+            )),
           ),
         )
       ],
