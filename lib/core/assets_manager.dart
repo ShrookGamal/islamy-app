@@ -10,4 +10,5 @@ class AssetsManager {
   static const String splash = '${base}splash.jpg';
   static const String quranHeaderImage = '${base}quran_header_icon.png';
   static const String hadithHeaderImage = '${base}hadith_header_icon.png';
+  static const String radioHeaderImage = '${base}radio_header_icon.png';
 }
