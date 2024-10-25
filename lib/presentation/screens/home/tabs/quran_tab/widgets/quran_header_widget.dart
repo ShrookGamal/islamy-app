@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../../core/strings_manager.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranHeaderWidget extends StatelessWidget {
   QuranHeaderWidget({super.key});
@@ -17,7 +16,7 @@ class QuranHeaderWidget extends StatelessWidget {
           children: [
             Expanded(
                 flex: 3,
-                child: Text(StringsManager.versesNumber,
+                child: Text(AppLocalizations.of(context)!.chapterName,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineMedium)),
             Container(
@@ -26,7 +25,7 @@ class QuranHeaderWidget extends StatelessWidget {
             ),
             Expanded(
                 flex: 3,
-                child: Text(StringsManager.chapterName,
+                child: Text(AppLocalizations.of(context)!.versesNumber,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineMedium)),
           ],

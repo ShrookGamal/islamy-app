@@ -13,7 +13,7 @@ class HadithHeaderWidget extends StatelessWidget {
                     color: Theme.of(context).dividerColor, width: 2))),
         child: Text(
           'الأحاديث',
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(context).textTheme.headlineLarge,
           textAlign: TextAlign.center,
         ));
   }

@@ -1,0 +1,16 @@
+{
+  "appBarTitle": " Islami ",
+  "chapterName": " Chapter Name ",
+  "versesNumber": " Verses Number ",
+  "quranLabel": " Quran ",
+  "hadithLabel": " Hadith ",
+  "sebhaLabel": " Sebha ",
+  "radioLabel": " Radio ",
+  "settingsLabel": " Settings ",
+  "themeLabel": " Theme ",
+  "languageLabel": " Language ",
+  "light": "Light",
+  "dark": "Dark",
+  "eng": "English",
+  "ar": "Arabic"
+}

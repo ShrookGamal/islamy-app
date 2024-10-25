@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ThemeSheet extends StatefulWidget {
   const ThemeSheet({super.key});
@@ -16,11 +17,11 @@ class _ThemeSheetState extends State<ThemeSheet> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildSelectedTheme('Light'),
+          buildSelectedTheme(AppLocalizations.of(context)!.light),
           SizedBox(
             height: 10,
           ),
-          buildUnSelectedTheme('Dark')
+          buildUnSelectedTheme(AppLocalizations.of(context)!.dark)
         ],
       ),
     );
@@ -44,7 +45,7 @@ class _ThemeSheetState extends State<ThemeSheet> {
 
   Widget buildUnSelectedTheme(String unSelectedTheme) {
     return Text(
-      'dark',
+      AppLocalizations.of(context)!.dark,
       style: Theme.of(context).textTheme.labelSmall,
     );
   }

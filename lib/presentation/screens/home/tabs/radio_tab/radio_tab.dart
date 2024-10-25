@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/core/assets_manager.dart';
-import 'package:flutter_projects/core/colors_manager.dart';
 
 class RadioTab extends StatelessWidget {
   const RadioTab({super.key});
@@ -17,21 +16,21 @@ class RadioTab extends StatelessWidget {
             'إذاعة القرآن الكريم',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Icon(
                 Icons.skip_previous_sharp,
-                color: ColorsManager.goldColor,
+                color: Theme.of(context).dividerColor,
               ),
               Icon(
                 Icons.play_arrow,
-                color: ColorsManager.goldColor,
+                color: Theme.of(context).dividerColor,
                 size: 40,
               ),
               Icon(
                 Icons.skip_next,
-                color: ColorsManager.goldColor,
+                color: Theme.of(context).dividerColor,
               ),
             ],
           )
