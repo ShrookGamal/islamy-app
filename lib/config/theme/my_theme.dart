@@ -27,10 +27,26 @@ class MyTheme {
           titleMedium: TextStyle(
               fontSize: 19,
               color: ColorsManager.black,
-              fontWeight: FontWeight.w400)),
+              fontWeight: FontWeight.w400),
+          labelMedium: TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 18,
+              color: ColorsManager.goldColor),
+          labelSmall: TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 16,
+              color: Colors.white)),
       cardTheme: CardTheme(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          color: Color(0XFFFCFAEE)));
+          color: Color(0XFFFCFAEE)),
+      bottomSheetTheme: BottomSheetThemeData(
+          elevation: 10,
+          /*shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),)),*/
+          backgroundColor: ColorsManager.goldColor.withOpacity(0.7)));
+
   static ThemeData darkTheme = ThemeData();
 }
