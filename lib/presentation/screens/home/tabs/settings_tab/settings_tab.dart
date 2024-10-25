@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/settings_tab/widgets/language_bottom_sheet.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/settings_tab/widgets/theme_bottom_sheet.dart';
-
-import '../../../../../core/colors_manager.dart';
 
 class SettingsTab extends StatelessWidget {
   const SettingsTab({super.key});
@@ -13,8 +12,8 @@ class SettingsTab extends StatelessWidget {
       padding: const EdgeInsets.all(30.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
-          'Theme',
-          style: Theme.of(context).textTheme.labelLarge,
+          AppLocalizations.of(context)!.themeLabel,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         SizedBox(
           height: 5,
@@ -29,10 +28,10 @@ class SettingsTab extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(
-                  color: ColorsManager.goldColor,
+                  color: Theme.of(context).dividerColor,
                 )),
             child: Text(
-              'Light',
+              AppLocalizations.of(context)!.light,
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ),
@@ -41,8 +40,8 @@ class SettingsTab extends StatelessWidget {
           height: 20,
         ),
         Text(
-          'Language',
-          style: Theme.of(context).textTheme.labelLarge,
+          AppLocalizations.of(context)!.languageLabel,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         SizedBox(
           height: 5,
@@ -57,10 +56,10 @@ class SettingsTab extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(
-                  color: ColorsManager.goldColor,
+                  color: Theme.of(context).dividerColor,
                 )),
             child: Text(
-              'English',
+              AppLocalizations.of(context)!.eng,
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ),

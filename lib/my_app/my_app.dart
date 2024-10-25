@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_projects/core/routes_manager.dart';
 import 'package:flutter_projects/presentation/screens/home/quran_details_screen/quran_details.dart';
 import 'package:flutter_projects/presentation/screens/splash/splash_screen.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: MyTheme.lightTheme,
       darkTheme: MyTheme.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       initialRoute: RoutesManager.splashRoute,
       routes: {
         RoutesManager.splashRoute: (context) => const SplashScreen(),
@@ -24,6 +25,17 @@ class MyApp extends StatelessWidget {
         RoutesManager.quranDetailsRoute: (context) => QuranDetails(),
         RoutesManager.hadithDetailsRoute: (context) => HadithDetails(),
       },
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      /* [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],*/
+      supportedLocales: [
+        Locale('en'), // English
+        Locale('ar'), // arabic
+      ],
       /*onGenerateRoute: (RouteSettings settings)
       {
         switch(settings.name)
@@ -44,6 +56,7 @@ class MyApp extends StatelessWidget {
 
       },*/
       debugShowCheckedModeBanner: false,
+      locale: Locale('ar'),
     );
   }
 }

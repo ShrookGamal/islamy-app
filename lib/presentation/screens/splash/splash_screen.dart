@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projects/config/theme/my_theme.dart';
 import 'package:flutter_projects/core/assets_manager.dart';
 import 'package:flutter_projects/core/routes_manager.dart';
 
@@ -12,12 +13,16 @@ class SplashScreen extends StatelessWidget {
     });
     return Stack(alignment: Alignment.center, children: [
       Image.asset(
-        AssetsManager.splashBackGround,
+        MyTheme.isDarkEnabled
+            ? AssetsManager.splashBackGroundDark
+            : AssetsManager.splashBackGround,
         width: double.infinity,
         fit: BoxFit.fill,
       ),
       Image.asset(
-        AssetsManager.splashLogo,
+        MyTheme.isDarkEnabled
+            ? AssetsManager.splashLogoDark
+            : AssetsManager.splashLogo,
         width: 262,
         height: 262,
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projects/core/colors_manager.dart';
 
+import '../../../../../config/theme/my_theme.dart';
 import '../../../../../core/assets_manager.dart';
 
 class SebhaTab extends StatefulWidget {
@@ -34,13 +34,18 @@ class _SebhaTabState extends State<SebhaTab> {
           children: [
             Positioned(
                 left: size.width * 0.48,
-                child: Image.asset(AssetsManager.sebhaHeaderImage)),
+                child: Image.asset(MyTheme.isDarkEnabled
+                    ? AssetsManager.sebhaHeaderDarkImage
+                    : AssetsManager.sebhaHeaderImage)),
             Padding(
-              padding: EdgeInsets.only(top: size.height * 0.081),
+              padding: EdgeInsets.only(top: size.height * 0.12),
               child: Transform.rotate(
                 angle: angle,
                 child: Image.asset(
-                    height: size.height * 0.35, AssetsManager.sebhaBodyImage),
+                    height: size.height * 0.35,
+                    MyTheme.isDarkEnabled
+                        ? AssetsManager.sebhaBodyDarkImage
+                        : AssetsManager.sebhaBodyImage),
               ),
             ),
           ],
@@ -56,12 +61,13 @@ class _SebhaTabState extends State<SebhaTab> {
         Container(
           margin: EdgeInsets.symmetric(horizontal: size.width * 0.43),
           decoration: BoxDecoration(
-              color: ColorsManager.goldColor,
+              color: Theme.of(context).colorScheme.background,
               borderRadius: BorderRadius.circular(20)),
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 18),
           child: Text(
             counter.toString(),
             textAlign: TextAlign.center,
+            style: TextStyle(color: Theme.of(context).colorScheme.secondary),
           ),
         ),
         Spacer(
@@ -72,13 +78,13 @@ class _SebhaTabState extends State<SebhaTab> {
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: size.width * 0.3),
             decoration: BoxDecoration(
-                color: ColorsManager.goldColor,
+                color: Theme.of(context).colorScheme.primary,
                 borderRadius: BorderRadius.circular(30)),
             padding: EdgeInsets.all(10),
             child: Text(
               azkar[index],
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Theme.of(context).colorScheme.secondary),
             ),
           ),
         ),

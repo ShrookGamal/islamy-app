@@ -4,6 +4,8 @@ import 'package:flutter_projects/core/assets_manager.dart';
 import 'package:flutter_projects/core/strings_manager.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/quran_tab/quran_tab.dart';
 
+import '../../../../config/theme/my_theme.dart';
+
 class QuranDetails extends StatefulWidget {
   QuranDetails({super.key});
 
@@ -21,13 +23,18 @@ class _QuranDetailsState extends State<QuranDetails> {
     return Stack(
       children: [
         Image.asset(
-          AssetsManager.lightBackGround,
+          MyTheme.isDarkEnabled
+              ? AssetsManager.darkBackGround
+              : AssetsManager.lightBackGround,
           width: double.infinity,
           fit: BoxFit.fill,
         ),
         Scaffold(
           appBar: AppBar(
-            title: Text(suraItem.suraName),
+            title: Text(
+              suraItem.suraName,
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
@@ -54,7 +61,8 @@ class _QuranDetailsState extends State<QuranDetails> {
                               verses[index],
                                   textAlign: TextAlign.center,
                                   textDirection: TextDirection.rtl,
-                                ),
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
                               ),
                               itemCount: verses.length,
                   ),

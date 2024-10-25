@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/core/routes_manager.dart';
+
 import '../quran_tab.dart';
 
 class SuraNameWidget extends StatelessWidget {
@@ -16,7 +17,7 @@ class SuraNameWidget extends StatelessWidget {
       },
       child: IntrinsicHeight(
         child: Row(
-          textDirection: TextDirection.rtl,
+          //textDirection: TextDirection.rtl,
           children: [
             Expanded(
                 child: Text(
