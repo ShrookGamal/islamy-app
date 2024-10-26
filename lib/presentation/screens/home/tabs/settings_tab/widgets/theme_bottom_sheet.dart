@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_projects/providers/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class ThemeSheet extends StatefulWidget {
   const ThemeSheet({super.key});
@@ -7,21 +9,33 @@ class ThemeSheet extends StatefulWidget {
   @override
   State<ThemeSheet> createState() => _ThemeSheetState();
 }
-
 class _ThemeSheetState extends State<ThemeSheet> {
   @override
   Widget build(BuildContext context) {
+    var myProvide = Provider.of<SettingsProvider>(context);
     return Container(
       padding: EdgeInsets.all(10),
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildSelectedTheme(AppLocalizations.of(context)!.light),
-          SizedBox(
+          InkWell(
+              onTap: () {
+                myProvide.changeAppTheme(ThemeMode.light);
+              },
+              child: myProvide.currentTheme == ThemeMode.light
+                  ? buildSelectedTheme(AppLocalizations.of(context)!.light)
+                  : buildUnSelectedTheme(AppLocalizations.of(context)!.light)),
+          const SizedBox(
             height: 10,
           ),
-          buildUnSelectedTheme(AppLocalizations.of(context)!.dark)
+          InkWell(
+              onTap: () {
+                myProvide.changeAppTheme(ThemeMode.dark);
+              },
+              child: myProvide.currentTheme == ThemeMode.dark
+                  ? buildSelectedTheme(AppLocalizations.of(context)!.dark)
+                  : buildUnSelectedTheme(AppLocalizations.of(context)!.dark))
         ],
       ),
     );
@@ -44,9 +58,13 @@ class _ThemeSheetState extends State<ThemeSheet> {
   }
 
   Widget buildUnSelectedTheme(String unSelectedTheme) {
-    return Text(
-      AppLocalizations.of(context)!.dark,
-      style: Theme.of(context).textTheme.labelSmall,
+    return Row(
+      children: [
+        Text(
+          unSelectedTheme,
+          style: Theme.of(context).textTheme.labelSmall,
+        ),
+      ],
     );
   }
 }

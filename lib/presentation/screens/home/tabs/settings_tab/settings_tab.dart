@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/settings_tab/widgets/language_bottom_sheet.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/settings_tab/widgets/theme_bottom_sheet.dart';
+import 'package:flutter_projects/providers/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class SettingsTab extends StatelessWidget {
   const SettingsTab({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var myProvider = Provider.of<SettingsProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -31,7 +34,9 @@ class SettingsTab extends StatelessWidget {
                   color: Theme.of(context).dividerColor,
                 )),
             child: Text(
-              AppLocalizations.of(context)!.light,
+              myProvider.isLightTheme()
+                  ? AppLocalizations.of(context)!.light
+                  : AppLocalizations.of(context)!.dark,
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ),
@@ -59,7 +64,9 @@ class SettingsTab extends StatelessWidget {
                   color: Theme.of(context).dividerColor,
                 )),
             child: Text(
-              AppLocalizations.of(context)!.eng,
+              myProvider.currentLanguage == 'en'
+                  ? AppLocalizations.of(context)!.eng
+                  : AppLocalizations.of(context)!.ar,
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ),

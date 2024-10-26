@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_projects/core/assets_manager.dart';
 import 'package:flutter_projects/core/strings_manager.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/quran_tab/quran_tab.dart';
-
-import '../../../../config/theme/my_theme.dart';
+import 'package:flutter_projects/providers/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class QuranDetails extends StatefulWidget {
   QuranDetails({super.key});
@@ -18,14 +18,15 @@ class _QuranDetailsState extends State<QuranDetails> {
 
   @override
   Widget build(BuildContext context) {
+    var myProvider = Provider.of<SettingsProvider>(context);
     SuraItem suraItem = ModalRoute.of(context)?.settings.arguments as SuraItem;
     if (verses.isEmpty) readQuranFile(suraItem.index);
     return Stack(
       children: [
         Image.asset(
-          MyTheme.isDarkEnabled
-              ? AssetsManager.darkBackGround
-              : AssetsManager.lightBackGround,
+          myProvider.isLightTheme()
+              ? AssetsManager.lightBackGround
+              : AssetsManager.darkBackGround,
           width: double.infinity,
           fit: BoxFit.fill,
         ),

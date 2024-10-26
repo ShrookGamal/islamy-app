@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_projects/config/theme/my_theme.dart';
 import 'package:flutter_projects/core/assets_manager.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/hadith_tab/hadith_tab.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/quran_tab/quran_tab.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/radio_tab/radio_tab.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/sebha_tab/sebha_tab.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/settings_tab/settings_tab.dart';
+import 'package:provider/provider.dart';
+
+import '../../../providers/settings_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -28,12 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var myProvider = Provider.of<SettingsProvider>(context);
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: MyTheme.isDarkEnabled
-                  ? AssetImage(AssetsManager.darkBackGround)
-                  : AssetImage(AssetsManager.lightBackGround),
+              image: myProvider.isLightTheme()
+                  ? AssetImage(AssetsManager.lightBackGround)
+                  : AssetImage(AssetsManager.darkBackGround),
               fit: BoxFit.fill)),
       child: Scaffold(
         appBar: AppBar(

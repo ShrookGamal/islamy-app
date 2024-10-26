@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_projects/providers/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class LanguageSheet extends StatefulWidget {
   const LanguageSheet({super.key});
@@ -11,27 +13,40 @@ class LanguageSheet extends StatefulWidget {
 class _LanguageSheetState extends State<LanguageSheet> {
   @override
   Widget build(BuildContext context) {
+    var myProvider = Provider.of<SettingsProvider>(context);
     return Container(
       padding: EdgeInsets.all(10),
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildSelectedLang(AppLocalizations.of(context)!.eng),
-          SizedBox(
+          InkWell(
+              onTap: () {
+                myProvider.changeAppLanguage('en');
+              },
+              child: myProvider.currentLanguage == 'en'
+                  ? buildSelectedLang(AppLocalizations.of(context)!.eng)
+                  : buildUnSelectedLang(AppLocalizations.of(context)!.eng)),
+          const SizedBox(
             height: 10,
           ),
-          buildUnSelectedLang(AppLocalizations.of(context)!.ar)
+          InkWell(
+              onTap: () {
+                myProvider.changeAppLanguage('ar');
+              },
+              child: myProvider.currentLanguage == 'ar'
+                  ? buildSelectedLang(AppLocalizations.of(context)!.ar)
+                  : buildUnSelectedLang(AppLocalizations.of(context)!.ar))
         ],
       ),
     );
   }
 
-  Widget buildSelectedLang(String selectedlang) {
+  Widget buildSelectedLang(String selectedLang) {
     return Row(
       children: [
         Text(
-          selectedlang,
+          selectedLang,
           style: Theme.of(context).textTheme.labelSmall,
         ),
         Spacer(),
@@ -44,9 +59,13 @@ class _LanguageSheetState extends State<LanguageSheet> {
   }
 
   Widget buildUnSelectedLang(String unSelectedLang) {
-    return Text(
-      unSelectedLang,
-      style: Theme.of(context).textTheme.labelSmall,
+    return Row(
+      children: [
+        Text(
+          unSelectedLang,
+          style: Theme.of(context).textTheme.labelSmall,
+        ),
+      ],
     );
   }
 }

@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/hadith_tab/hadith_tab.dart';
+import 'package:provider/provider.dart';
 
-import '../../../../config/theme/my_theme.dart';
 import '../../../../core/assets_manager.dart';
+import '../../../../providers/settings_provider.dart';
 
 class HadithDetails extends StatelessWidget {
   const HadithDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var myProvider = Provider.of<SettingsProvider>(context);
     Hadith hadith = ModalRoute.of(context)?.settings.arguments as Hadith;
     return Stack(
       children: [
         Image.asset(
-          MyTheme.isDarkEnabled
-              ? AssetsManager.darkBackGround
-              : AssetsManager.lightBackGround,
+          myProvider.isLightTheme()
+              ? AssetsManager.lightBackGround
+              : AssetsManager.darkBackGround,
           width: double.infinity,
           fit: BoxFit.fill,
         ),

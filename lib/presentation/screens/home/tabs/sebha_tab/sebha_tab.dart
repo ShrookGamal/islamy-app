@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projects/providers/settings_provider.dart';
+import 'package:provider/provider.dart';
 
-import '../../../../../config/theme/my_theme.dart';
 import '../../../../../core/assets_manager.dart';
 
 class SebhaTab extends StatefulWidget {
@@ -25,6 +26,7 @@ class _SebhaTabState extends State<SebhaTab> {
   ];
   @override
   Widget build(BuildContext context) {
+    var myProvider = Provider.of<SettingsProvider>(context);
     Size size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -34,18 +36,19 @@ class _SebhaTabState extends State<SebhaTab> {
           children: [
             Positioned(
                 left: size.width * 0.48,
-                child: Image.asset(MyTheme.isDarkEnabled
-                    ? AssetsManager.sebhaHeaderDarkImage
-                    : AssetsManager.sebhaHeaderImage)),
+                child: Image.asset(myProvider.isLightTheme()
+                    ? AssetsManager.sebhaHeaderImage
+                    : AssetsManager.sebhaHeaderDarkImage)),
             Padding(
-              padding: EdgeInsets.only(top: size.height * 0.12),
+              padding: EdgeInsets.only(top: size.height * 0.1),
               child: Transform.rotate(
                 angle: angle,
                 child: Image.asset(
-                    height: size.height * 0.35,
-                    MyTheme.isDarkEnabled
-                        ? AssetsManager.sebhaBodyDarkImage
-                        : AssetsManager.sebhaBodyImage),
+                    // height: size.height * 0.3,
+                    //fit: BoxFit.contain,
+                    myProvider.isLightTheme()
+                        ? AssetsManager.sebhaBodyImage
+                        : AssetsManager.sebhaBodyDarkImage),
               ),
             ),
           ],
