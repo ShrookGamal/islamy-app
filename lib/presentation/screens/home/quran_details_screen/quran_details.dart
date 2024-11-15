@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_projects/core/assets_manager.dart';
 import 'package:flutter_projects/core/strings_manager.dart';
-import 'package:flutter_projects/presentation/screens/home/quran_details_screen/widgets/quran_details_body.dart';
 import 'package:flutter_projects/presentation/screens/home/tabs/quran_tab/quran_tab.dart';
+import 'package:flutter_projects/providers/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class QuranDetails extends StatefulWidget {
   QuranDetails({super.key});
@@ -17,24 +18,31 @@ class _QuranDetailsState extends State<QuranDetails> {
 
   @override
   Widget build(BuildContext context) {
+    var myProvider = Provider.of<SettingsProvider>(context);
     SuraItem suraItem = ModalRoute.of(context)?.settings.arguments as SuraItem;
     if (verses.isEmpty) readQuranFile(suraItem.index);
     return Stack(
       children: [
         Image.asset(
-          AssetsManager.lightBackGround,
+          myProvider.isLightTheme()
+              ? AssetsManager.lightBackGround
+              : AssetsManager.darkBackGround,
           width: double.infinity,
           fit: BoxFit.fill,
         ),
         Scaffold(
           appBar: AppBar(
-            title: Text(StringsManager.appBarTitle),
+            title: Text(
+              suraItem.suraName,
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
           ),
           body: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-            child: Column(
+            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+            child: Card(
+                child: Column(
               children: [
-                Text(suraItem.suraName,
+                Text(StringsManager.suraHeader,
                     style: Theme.of(context).textTheme.headlineMedium),
                 Container(
                   height: 1,
@@ -42,25 +50,26 @@ class _QuranDetailsState extends State<QuranDetails> {
                   color: Theme.of(context).dividerColor,
                 ),
                 Expanded(
-                  child: Card(
-                      shape: Theme.of(context).cardTheme.shape,
-                      color: Theme.of(context).cardTheme.color,
+                  child: ListView.builder(
+                    itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: verses.isEmpty
-                          ? const Center(child: CircularProgressIndicator())
-                          : ListView.builder(
-                              itemBuilder: (context, index) => Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  verses[index],
-                                  textAlign: TextAlign.center,
-                                  textDirection: TextDirection.rtl,
-                                ),
-                              ),
-                              itemCount: verses.length,
-                            )),
+                          ? Center(
+                              child: CircularProgressIndicator(
+                              color: Theme.of(context).dividerColor,
+                            ))
+                          : Text(
+                              verses[index],
+                              textAlign: TextAlign.center,
+                              textDirection: TextDirection.rtl,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                    ),
+                    itemCount: verses.length,
+                  ),
                 ),
               ],
-            ),
+            )),
           ),
         )
       ],
@@ -74,7 +83,13 @@ class _QuranDetailsState extends State<QuranDetails> {
     List<String> suraLines = fileContent.trim().split('\n');
     // هنا انا عايزة اعمل ليست لكل صورة و اشيل في كل اندكس ايه
     // trim => remove white spaces
-    verses = suraLines;
+    List<String> numberedVerses = [];
+    for (int i = 0; i < suraLines.length; i++) {
+      String verseText = suraLines[i];
+      int verseNumber = i + 1;
+      numberedVerses.add("$verseText  ﴿$verseNumber﴾ ");
+    }
+    verses = numberedVerses;
     setState(() {});
   }
 }
