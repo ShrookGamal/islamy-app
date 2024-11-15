@@ -52,7 +52,7 @@ class _QuranDetailsState extends State<QuranDetails> {
                 Expanded(
                   child: ListView.builder(
                     itemBuilder: (context, index) => Padding(
-                                padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: verses.isEmpty
                           ? Center(
                               child: CircularProgressIndicator(
@@ -60,12 +60,12 @@ class _QuranDetailsState extends State<QuranDetails> {
                             ))
                           : Text(
                               verses[index],
-                                  textAlign: TextAlign.center,
-                                  textDirection: TextDirection.rtl,
+                              textAlign: TextAlign.center,
+                              textDirection: TextDirection.rtl,
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
-                              ),
-                              itemCount: verses.length,
+                    ),
+                    itemCount: verses.length,
                   ),
                 ),
               ],
@@ -83,7 +83,13 @@ class _QuranDetailsState extends State<QuranDetails> {
     List<String> suraLines = fileContent.trim().split('\n');
     // هنا انا عايزة اعمل ليست لكل صورة و اشيل في كل اندكس ايه
     // trim => remove white spaces
-    verses = suraLines;
+    List<String> numberedVerses = [];
+    for (int i = 0; i < suraLines.length; i++) {
+      String verseText = suraLines[i];
+      int verseNumber = i + 1;
+      numberedVerses.add("$verseText  ﴿$verseNumber﴾ ");
+    }
+    verses = numberedVerses;
     setState(() {});
   }
 }

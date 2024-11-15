@@ -39,6 +39,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  flutter_screenutil: ^5.9.3
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:

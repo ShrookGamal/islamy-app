@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_projects/providers/settings_provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class LanguageSheet extends StatefulWidget {
@@ -15,7 +16,7 @@ class _LanguageSheetState extends State<LanguageSheet> {
   Widget build(BuildContext context) {
     var myProvider = Provider.of<SettingsProvider>(context);
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: REdgeInsets.all(20),
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,8 +28,8 @@ class _LanguageSheetState extends State<LanguageSheet> {
               child: myProvider.currentLanguage == 'en'
                   ? buildSelectedLang(AppLocalizations.of(context)!.eng)
                   : buildUnSelectedLang(AppLocalizations.of(context)!.eng)),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 20.h,
           ),
           InkWell(
               onTap: () {

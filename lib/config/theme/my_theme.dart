@@ -29,8 +29,8 @@ class MyTheme {
       textTheme: const TextTheme(
           headlineLarge: TextStyle(color: ColorsManager.black, fontSize: 25),
           headlineMedium: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              fontSize: 25,
               color: Color(0XFF242424)),
           titleMedium: TextStyle(
               fontSize: 19,
@@ -42,8 +42,11 @@ class MyTheme {
               color: ColorsManager.goldColor),
           labelSmall: TextStyle(
               fontWeight: FontWeight.normal,
-              fontSize: 16,
-              color: Colors.white)),
+              fontSize: 16, color: Colors.white),
+          labelLarge: TextStyle(
+              color: Color(0XFF242424),
+              fontWeight: FontWeight.w500,
+              fontSize: 20)),
       cardTheme: CardTheme(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -78,8 +81,8 @@ class MyTheme {
       textTheme: const TextTheme(
           headlineLarge: TextStyle(color: ColorsManager.yellow, fontSize: 25),
           headlineMedium: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              fontSize: 25,
               color: ColorsManager.white),
           titleMedium: TextStyle(
               fontSize: 19,
@@ -91,7 +94,11 @@ class MyTheme {
               color: ColorsManager.yellow),
           labelSmall: TextStyle(
               fontWeight: FontWeight.normal, fontSize: 16, color: Colors.white),
-          bodyMedium: TextStyle(color: ColorsManager.yellow)),
+          bodyMedium: TextStyle(color: ColorsManager.yellow),
+          labelLarge: TextStyle(
+              color: ColorsManager.white,
+              fontWeight: FontWeight.w500,
+              fontSize: 20)),
       cardTheme: CardTheme(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),

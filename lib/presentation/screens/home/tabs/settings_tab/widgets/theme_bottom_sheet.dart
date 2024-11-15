@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_projects/providers/settings_provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class ThemeSheet extends StatefulWidget {
@@ -14,7 +15,7 @@ class _ThemeSheetState extends State<ThemeSheet> {
   Widget build(BuildContext context) {
     var myProvide = Provider.of<SettingsProvider>(context);
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: REdgeInsets.all(30),
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,8 +27,8 @@ class _ThemeSheetState extends State<ThemeSheet> {
               child: myProvide.currentTheme == ThemeMode.light
                   ? buildSelectedTheme(AppLocalizations.of(context)!.light)
                   : buildUnSelectedTheme(AppLocalizations.of(context)!.light)),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 20.h,
           ),
           InkWell(
               onTap: () {

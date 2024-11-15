@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/core/routes_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../hadith_tab.dart';
 
@@ -16,7 +17,7 @@ class HadithTitleWidget extends StatelessWidget {
             arguments: hadith);
       },
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: REdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Text(
           hadith.title,
           style: Theme.of(context).textTheme.titleMedium,

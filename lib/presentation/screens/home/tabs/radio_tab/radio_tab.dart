@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/core/assets_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RadioTab extends StatelessWidget {
   const RadioTab({super.key});
@@ -7,7 +8,7 @@ class RadioTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
+      padding: REdgeInsets.symmetric(vertical: 50, horizontal: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -22,15 +23,17 @@ class RadioTab extends StatelessWidget {
               Icon(
                 Icons.skip_previous_sharp,
                 color: Theme.of(context).dividerColor,
+                size: 40,
               ),
               Icon(
-                Icons.play_arrow,
+                Icons.play_circle_fill,
                 color: Theme.of(context).dividerColor,
-                size: 40,
+                size: 50,
               ),
               Icon(
                 Icons.skip_next,
                 color: Theme.of(context).dividerColor,
+                size: 40,
               ),
             ],
           )
